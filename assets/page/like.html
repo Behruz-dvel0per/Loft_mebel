@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/index.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>like</title>
+</head>
+<body>
+    <header>
+        <section class="flex justify-around bg-[#313131] pt-[10px] pb-[10px]  max-[680px]:hidden"> 
+            <ul class="glav_box flex justify-center gap-[32px]">
+                <li>
+                    <a href="#">Главная</a>
+                </li>
+                <li>
+                    <a href="#">О нас</a>
+                </li>
+                <li>
+                    <a href="#">Контакты</a>
+                </li>
+            </ul>
+            <div class="flex gap-[32px]">
+                <div class="flex gap-[11px]">
+                    <span><img src="../img/phone (1).svg" alt=""></span>
+                    <p class="num_text">
+                        8 (964) 89 99 119
+                    </p>
+                </div>
+                <div class="flex gap-[10px]">
+                    <span><img src="../img/delivery-icon (1).svg" alt=""></span>
+                    <p class="num_text">
+                        Доставка
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="flex justify-around ">
+            <div class="mt-[32px]">
+                <a href="../../index.html"><img src="../img/LOGO (5).svg" alt=""></a>
+            </div>
+            <div class="max-[584px]:hidden">
+                <img class="absolute mt-[38px] ml-[16px] max-[1133px]:mt-[33px]" src="../img/search-icon (1).svg" alt="">
+                <input type="search" id="input" placeholder="Поиск">
+            </div>
+            <div class="flex gap-[30px] mt-[36px]">
+                <div>
+                    <a href="#"><img src="../img/like (2).svg" alt=""></a>
+                </div>
+                <div>
+                    <a href="#"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.70653 5.5V4.85714C4.70653 2.7269 6.43343 1 8.56367 1C10.6939 1 12.4208 2.7269 12.4208 4.85714V5.5M2.00802 8.5723L1.00802 17.5723C0.923392 18.3339 1.51957 19 2.28587 19H14.8415C15.6078 19 16.2039 18.3339 16.1193 17.5723L15.1193 8.5723C15.047 7.92117 14.4966 7.42857 13.8415 7.42857H3.28587C2.63073 7.42857 2.08036 7.92117 2.00802 8.5723Z" stroke="black" />
+                        <circle cx="16" cy="5" r="4" fill="#D74444" />
+                      </svg></a>
+                </div>
+                <div>
+                   <img src="../img/profile-icon (1).svg" alt="">
+                </div>
+            </div>
+        </section>
+        <div class="flex justify-center">
+            <div class="hidden max-[584px]:block">
+                <img class="absolute mt-[38px] ml-[16px] max-[1133px]:mt-[33px]" src="./assets/img/search-icon (1).svg" alt="">
+                <input type="search" id="input" placeholder="Поиск">
+            </div>
+        </div>
+    </header>
+    <h1 class="we_like flex justify-center pt-[30px]">Sizga yoqanlar</h1>
+    <div id="liked-items" class="flex justify-center gap-[60px] pt-[40px]"></div>
+    <button class="clear flex m-auto mt-[60px]" onclick="clearLikedItems()">Tozalash</button>
+    <script src="../js/index.js"></script>
+    <script>
+        displayLikedItems();
+        function displayLikedItems() {
+            let likedItems = localStorage.getItem('likedItems');
+            if (likedItems) {
+                likedItems = JSON.parse(likedItems);
+                let likedItemsElement = document.getElementById('liked-items');
+                likedItems.forEach((item) => {
+                    let itemElement = document.createElement('div');
+                    let itemNameElement = document.createElement('p');
+                    itemNameElement.textContent = item;
+                    itemElement.appendChild(itemNameElement);
+                    likedItemsElement.appendChild(itemElement);
+                });
+            }
+        }
+        function clearLikedItems() {
+            localStorage.removeItem('likedItems');
+            location.reload();
+        }
+    </script>
+</body>
+</html>
